@@ -141,6 +141,25 @@ class TesteBugBankApplicationTests {
 
             assertEquals(1500.00, saldoValor, 0.01, "O saldo após a transferência deve ser R$ 1.500,00");
 
+            WebElement SairButton2 = wait.until(ExpectedConditions.elementToBeClickable(By.id("btnExit")));
+            js.executeScript("arguments[0].click();", SairButton2);
+
+            WebElement inputEmailLogin3 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
+            inputEmailLogin3.sendKeys("lucca@gmail.com");
+
+            WebElement inputSenhaLogin3 =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));
+            inputSenhaLogin3.sendKeys("senha123");
+
+            WebElement acessarButton4 = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.style__ContainerButton-sc-1wsixal-0")));
+            acessarButton4.click();
+
+            WebElement saldo2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("textBalance")));
+            String saldoTexto2 = saldo2.getText();
+
+            String saldoValorTexto2 = saldoTexto2.split("R\\$")[1].trim().replace(".", "").replace(",", ".");
+            double saldoValor2 = Double.parseDouble(saldoValorTexto2);
+
+            assertEquals(500.00, saldoValor2, 0.01, "O saldo após a transferência deve ser R$ 500,00");
 
 
         } catch (NoSuchElementException e) {
