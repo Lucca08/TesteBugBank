@@ -21,7 +21,7 @@
     cd TesteBugBank
     ```
 
-## 3-Dependencias
+## 3-Dependências
 
 - org.springframework.boot:spring-boot-starter-data-jpa
 - org.springframework.boot:spring-boot-starter-security
