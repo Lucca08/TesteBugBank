@@ -55,10 +55,7 @@ class TesteBugBankApplicationTests {
             loginUser(driver, wait, "luccabibianogarcia@gmail.com", "senha123");
             verificarSaldo(wait, 1500.0);
             sairDaConta(wait);
-
-
-
-
+            
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         } finally {

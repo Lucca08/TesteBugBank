@@ -3,8 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.2.5'
     id 'io.spring.dependency-management' version '1.1.4'
     id 'org.asciidoctor.jvm.convert' version '3.3.2'
-    id 'jacoco'
-    id 'io.qameta.allure' version '2.9.6' // or the appropriate version
+    id 'io.qameta.allure' version '2.9.6' 
 }
 
 group = 'com.example'
@@ -23,6 +22,7 @@ allprojects {
 task cleanAllureResults(type: Delete) {
     delete 'allure-results'
 }
+
 
 
 repositories {
@@ -57,18 +57,22 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     testImplementation 'io.qameta.allure:allure-junit5:2.26.0'
-
+       testImplementation 'io.qameta.allure:allure-selenide:2.26.0'
+ implementation 'org.springframework.boot:spring-boot-starter-aop:3.2.5'
+        runtimeOnly 'org.aspectj:aspectjweaver:1.9.22.1' // Directly specifying the version
 
 
 }
 
 test {
     useJUnitPlatform()
+
+     systemProperty "allure.results.directory", "$buildDir/allure-results"
 }
 
 
 allure {
-    version = '2.26.0' // or the version you are using
+    version = '2.26.0' 
     autoconfigure = true
     aspectjweaver = true
 }
